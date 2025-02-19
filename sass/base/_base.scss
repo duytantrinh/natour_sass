@@ -1,0 +1,42 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit; /*inherit from parent body*/
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px (10/16px = 62.5%): normal desktop
+
+  //gọi mixin respond-phone
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px: ==> 75%
+  }
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px ==> 56.25%
+  }
+  @include respond(tab-port) {
+    // bây giờ ta có thề tùy chọn
+    // ex: ta muốn 1 rem = 8px ==> font-sixe: 8/16 = 50%
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    font-size: 50%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
